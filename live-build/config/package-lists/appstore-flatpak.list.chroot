@@ -1,0 +1,5 @@
+# “App store” via Flatpak + Flathub using GNOME Software.
+flatpak
+gnome-software
+gnome-software-plugin-flatpak
+

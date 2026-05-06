@@ -1,0 +1,10 @@
+# Wayland + Sway (lightweight, ChromeOS-ish minimalism).
+sway
+swaybg
+swayidle
+swaylock
+waybar
+wofi
+alacritty
+polkit-kde-agent-1
+

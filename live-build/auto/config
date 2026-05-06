@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+# Debian Live build configuration.
+# Docs: https://manpages.debian.org/live-build/lb_config.1.en.html
+
+lb config noauto \
+  --mode debian \
+  --distribution stable \
+  --architectures amd64 \
+  --archive-areas "main contrib non-free non-free-firmware" \
+  --binary-images iso-hybrid \
+  --debian-installer live \
+  --bootappend-live "boot=live components quiet splash" \
+  --iso-application "ChromeOS-like Debian (Starter)" \
+  --iso-publisher "YourName" \
+  --memtest none
+

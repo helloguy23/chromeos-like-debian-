@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Chromium
+Comment=Launch Chromium (ChromeOS-like)
+Exec=/usr/local/bin/launch-chromium
+Terminal=false
+X-GNOME-Autostart-enabled=true
+

@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+# ChromeOS-like default: open a “home” tab and keep things minimal.
+# Customize HOME_URL to point to your store / launcher.
+HOME_URL="${HOME_URL:-https://example.com}"
+
+exec chromium \
+  --no-first-run \
+  --disable-features=Translate \
+  --start-maximized \
+  "$HOME_URL"
+

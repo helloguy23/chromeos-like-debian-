@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+sudo ./auto/config
+sudo lb build
+

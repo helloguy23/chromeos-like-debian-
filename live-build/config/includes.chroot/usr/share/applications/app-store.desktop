@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=App Store
+Comment=Install apps (Flatpak)
+Exec=gnome-software
+Icon=chromeos-like
+Terminal=false
+Categories=System;Settings;
+

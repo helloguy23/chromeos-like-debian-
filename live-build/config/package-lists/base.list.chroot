@@ -1,0 +1,17 @@
+# Minimal base suitable for a small, smooth UX.
+ca-certificates
+sudo
+dbus-user-session
+network-manager
+network-manager-gnome
+openssh-client
+curl
+git
+fonts-noto
+fonts-noto-color-emoji
+pipewire
+wireplumber
+xdg-utils
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+
