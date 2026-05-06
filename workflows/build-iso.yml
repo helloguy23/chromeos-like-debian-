@@ -1,0 +1,36 @@
+name: Build ISO
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install live-build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            live-build xorriso squashfs-tools \
+            grub-pc-bin grub-efi-amd64-bin \
+            mtools dosfstools \
+            isolinux syslinux-common
+
+      - name: Build ISO
+        working-directory: chromeos-like-debian/live-build
+        run: |
+          sudo ./auto/config
+          sudo lb build
+          ls -lah
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chromeos-like-debian-iso
+          path: chromeos-like-debian/live-build/live-image-*.hybrid.iso
+
