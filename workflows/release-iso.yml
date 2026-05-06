@@ -1,0 +1,41 @@
+name: Build & Release ISO
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install live-build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            live-build xorriso squashfs-tools \
+            grub-pc-bin grub-efi-amd64-bin \
+            mtools dosfstools \
+            isolinux syslinux-common
+
+      - name: Build ISO
+        working-directory: live-build
+        run: |
+          sudo ./auto/config
+          sudo lb build
+          ls -lah live-image-*.hybrid.iso
+
+      - name: Create GitHub Release (tag builds)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            live-build/live-image-*.hybrid.iso
+
